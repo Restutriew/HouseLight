@@ -17,6 +17,6 @@ public class MainActivity extends AppCompatActivity {
         WebView webview = findViewById(R.id.houselight);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("http://192.168.137.1/project/cikara/cikara-ruhwan/public");
+        webview.loadUrl("http://192.168.44.222/project/cikara/cikara-ruhwan/public");
     }
 }
