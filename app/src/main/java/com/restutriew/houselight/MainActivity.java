@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
+    private ProgressBar bar;
+    private LinearLayout linearLayout;
 
     private ValueCallback<Uri> mUploadMessage;
     public ValueCallback<Uri[]> uploadMessage;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         WebView webView = findViewById(R.id.houselight);
+        bar = (ProgressBar) findViewById(R.id.progressBar2);
+        linearLayout = findViewById(R.id.linear);
 
         WebSettings mWebSettings = webView.getSettings();
         mWebSettings.setJavaScriptEnabled(true);
@@ -105,7 +112,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private class MyBrowser extends WebViewClient {
+    public class MyBrowser extends WebViewClient {
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            linearLayout.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
