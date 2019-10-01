@@ -8,10 +8,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -32,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         WebView webView = findViewById(R.id.houselight);
-
-//        webview.getSettings().setJavaScriptEnabled(true);
-//        webview.setWebViewClient(new WebViewClient());
-//        webview.loadUrl("http://192.168.43.222/cikara-ruhwan/public/");
 
         WebSettings mWebSettings = webView.getSettings();
         mWebSettings.setJavaScriptEnabled(true);
@@ -116,37 +114,44 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-//            view.loadData("Maaf Internet Anda tidak stabil", "text/html", "utf-8");
+            view.setVisibility(View.GONE);
+            Intent i = new Intent(MainActivity.this,ErrorPage.class);
+            startActivity(i);
+            finish();
             super.onReceivedError(view, request, error);
         }
 
-//        @Override
-//        public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-//            view.loadData("Maaf Internet Anda tidak stabil", "text/html", "utf-8");
-//            super.onReceivedHttpError(view, request, errorResponse);
-//        }
+
+        @Override
+        public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+            view.setVisibility(View.GONE);
+            Intent i = new Intent(MainActivity.this,ErrorPage.class);
+            startActivity(i);
+            finish();
+            super.onReceivedHttpError(view, request, errorResponse);
+        }
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction()==KeyEvent.ACTION_DOWN){
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    if(webView.canGoBack()){
-                        webView.goBack();
-                    }else{
-                        finish();
-                    }
-                    return true;
-            }
-        }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (event.getAction()==KeyEvent.ACTION_DOWN){
+//            switch (keyCode) {
+//                case KeyEvent.KEYCODE_BACK:
+//                    if(webView.canGoBack()){
+//                        webView.goBack();
+//                    }else{
+//                        finish();
+//                    }
+//                    return true;
+//            }
+//        }
 //        if ((keyCode == KeyEvent.KEYCODE_BACK)){
 //            webView.goBack();
 //            return true;
 //        }
-//
-        return super.onKeyDown(keyCode, event);
-    }
+////
+//        return super.onKeyDown(keyCode, event);
+//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
