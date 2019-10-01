@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mWebSettings.setAllowContentAccess(true);
 
         webView.setWebViewClient(new MyBrowser());
-        webView.loadUrl("http://192.168.43.178/project/cikara/cikara-ruhwan/public/");
+        webView.loadUrl("https://google.com");
 
         webView.setWebChromeClient(new WebChromeClient() {
             // For 3.0+ Devices (Start)
