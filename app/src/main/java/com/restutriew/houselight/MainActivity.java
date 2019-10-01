@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         mWebSettings.setAllowContentAccess(true);
 
         webView.setWebViewClient(new MyBrowser());
-        webView.loadUrl("http://192.168.43.222/cikara-ruhwan/public/");
+        webView.loadUrl("http://192.168.43.178/project/cikara/cikara-ruhwan/public/");
 
         webView.setWebChromeClient(new WebChromeClient() {
             // For 3.0+ Devices (Start)
@@ -129,12 +129,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-            webView.goBack();
-            return true;
+        if (event.getAction()==KeyEvent.ACTION_DOWN){
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    if(webView.canGoBack()){
+                        webView.goBack();
+                    }else{
+                        finish();
+                    }
+                    return true;
+            }
         }
-
+//        if ((keyCode == KeyEvent.KEYCODE_BACK)){
+//            webView.goBack();
+//            return true;
+//        }
+//
         return super.onKeyDown(keyCode, event);
     }
 
