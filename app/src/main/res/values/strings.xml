@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HouseLight</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="slide_1_title">Sewa</string>
+    <string name="slide_1_desc">Anda dapat dengan mudah mencari rumah untuk disewa</string>
+    <string name="slide_2_title">Jual</string>
+    <string name="slide_2_desc">Anda juga dapat menjual rumah disini</string>
+    <string name="slide_3_title">Beli</string>
+    <string name="slide_3_desc">Anda dapat membeli rumah sesuai dengan kriteria anda</string>
+    <string name="play_again_desc">Untuk mwlihatnya lagi Settings -> apps -> Intro View -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>

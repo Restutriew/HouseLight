@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -46,11 +45,10 @@ public class MainActivity extends AppCompatActivity {
         mWebSettings.setJavaScriptEnabled(true);
         mWebSettings.setSupportZoom(false);
         mWebSettings.setAllowFileAccess(true);
-        mWebSettings.setAllowFileAccess(true);
         mWebSettings.setAllowContentAccess(true);
 
         webView.setWebViewClient(new MyBrowser());
-        webView.loadUrl("https://google.com");
+        webView.loadUrl("http://spk.heldzinny.com/public/");
 
         webView.setWebChromeClient(new WebChromeClient() {
             // For 3.0+ Devices (Start)
@@ -149,27 +147,6 @@ public class MainActivity extends AppCompatActivity {
             super.onReceivedHttpError(view, request, errorResponse);
         }
     }
-
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (event.getAction()==KeyEvent.ACTION_DOWN){
-//            switch (keyCode) {
-//                case KeyEvent.KEYCODE_BACK:
-//                    if(webView.canGoBack()){
-//                        webView.goBack();
-//                    }else{
-//                        finish();
-//                    }
-//                    return true;
-//            }
-//        }
-//        if ((keyCode == KeyEvent.KEYCODE_BACK)){
-//            webView.goBack();
-//            return true;
-//        }
-////
-//        return super.onKeyDown(keyCode, event);
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
